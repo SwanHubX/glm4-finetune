@@ -1,0 +1,5 @@
+transformers
+trl
+datasets
+peft
+swanlab
