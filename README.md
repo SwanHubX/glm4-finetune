@@ -555,7 +555,7 @@ pip install accelerate deepspeed
 接下来使用如下命令来开启多卡训练（默认8GPU，可更改num_processes参数为实际卡数）：
 
 ```bash
-accelerate launch --num_processes 8 --config_file configs/zero2.yaml train.py
+accelerate launch --num_processes 8 --config_file configs/zero2.yaml instruct_train.py
 ```
 
 关于zero2的详细设置在`configs/zero2.yaml`中。
