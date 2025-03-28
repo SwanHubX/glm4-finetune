@@ -40,7 +40,7 @@
 
 * Alpaca数据集中文版：[https://huggingface.co/datasets/llamafactory/alpaca_gpt4_zh](https://huggingface.co/datasets/llamafactory/alpaca_gpt4_zh)
 
-* 本博客开源项目链接：[https://github.com/ShaohonChen/chatglm-finetune](https://github.com/ShaohonChen/chatglm-finetune)
+* 本博客开源项目链接：[https://github.com/SwanHubX/glm4-finetune](https://github.com/SwanHubX/glm4-finetune)
 
 * SwanLab训练日志查看：[https://swanlab.cn/@ShaohonChen/chatglm-finetune/](https://swanlab.cn/@ShaohonChen/chatglm-finetune/)
 
@@ -182,13 +182,13 @@ GlmForCausalLM(
 数据集我已经提前包括在了github项目当中，可以直接使用如下命令下载完整的实验代码
 
 ```bash
-git clone https://github.com/ShaohonChen/chatglm-finetune.git
+git clone https://github.com/SwanHubX/glm4-finetune.git
 ```
 
 如果只想下载数据集，可以直接下载如下文件：
 
 ```bash
-wget https://github.com/ShaohonChen/chatglm-finetune/blob/main/data/alpaca_gpt4_data_zh.json
+wget https://github.com/SwanHubX/glm4-finetune/blob/main/data/alpaca_gpt4_data_zh.json
 ```
 
 也可以通过🤗huggingface上下载：[https://huggingface.co/datasets/llamafactory/alpaca_gpt4_zh](https://huggingface.co/datasets/llamafactory/alpaca_gpt4_zh)
@@ -198,7 +198,7 @@ wget https://github.com/ShaohonChen/chatglm-finetune/blob/main/data/alpaca_gpt4_
 完整的微调代码公开在了GitHub上，使用如下命令即可下载
 
 ```bash
-git clone https://github.com/ShaohonChen/chatglm-finetune.git
+git clone https://github.com/SwanHubX/glm4-finetune.git
 ```
 
 文章的附件中也有完整的实现代码[#代码附件](#附件完整代码)
@@ -578,7 +578,7 @@ bash chat_cli.py
 
 完整代码如下，推荐还是通过使用github获得完整的代码
 
-[https://github.com/ShaohonChen/chatglm-finetune](https://github.com/ShaohonChen/chatglm-finetune)
+[https://github.com/SwanHubX/glm4-finetune](https://github.com/SwanHubX/glm4-finetune)
 
 记得帮忙点个star🌟
 
