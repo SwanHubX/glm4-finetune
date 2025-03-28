@@ -12,6 +12,8 @@
 
 注意：由于ChatGLM的模型相对较大，实际运行大概需要显存>=16G
 
+🎉 **SwanLab被官方集成进入了🤗HuggingFace Transformers：** 如果本地环境安装了SwanLab会默认开启！也可以通过`report_to="swanlab"`开启训练跟踪。
+
 ## 目录
 
 **目录：**
@@ -439,6 +441,8 @@ trainer.train()
 ```
 
 ## 启动训练+效果评测
+
+本代码在实现训练时默认是开启[SwanLab](https://swanlab.cn)的。SwanLab被官方集成进入了🤗HuggingFace Transformers。可以通过`report_to="swanlab"`开启训练跟踪。如果本地环境安装了SwanLab会默认开启！
 
 启动训练的命令如下：
 
