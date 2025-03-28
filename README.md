@@ -188,8 +188,10 @@ git clone https://github.com/ShaohonChen/chatglm-finetune.git
 如果只想下载数据集，可以直接下载如下文件：
 
 ```bash
-...
+wget https://github.com/ShaohonChen/chatglm-finetune/blob/main/data/alpaca_gpt4_data_zh.json
 ```
+
+也可以通过🤗huggingface上下载：[https://huggingface.co/datasets/llamafactory/alpaca_gpt4_zh](https://huggingface.co/datasets/llamafactory/alpaca_gpt4_zh)
 
 ## 代码说明+超参数调整
 
@@ -205,8 +207,47 @@ git clone https://github.com/ShaohonChen/chatglm-finetune.git
 
 加载模型的超参数设置，这里可以重点关注lora参数的设置，本文lora参数参考了ChatGLM官方微调代码的lora参数设置
 
-```python
+这里要注意学习率为5e-4，如果是全量微调要小一个数量级。
 
+```python
+################
+# Model kwargs
+################
+@dataclass
+class ChatGLM4ModelConfig(ModelConfig):
+    model_name_or_path: Optional[str] = field(
+        default="./weights/glm-4-9b-hf",
+        metadata={
+            "help": "Model checkpoint for weights initialization. default used glm4"
+        },
+    )
+    torch_dtype: Optional[str] = field(
+        default="bfloat16",
+        metadata={
+            "help": "Override the default `torch.dtype` and load the model under this dtype.",
+            "choices": ["auto", "bfloat16", "float16", "float32"],
+        },
+    )
+    use_peft: bool = field(
+        default=True,
+        metadata={"help": "Whether to use PEFT for training. Default true"},
+    )
+    lora_r: int = field(
+        default=8,
+        metadata={"help": "LoRA R value."},
+    )
+    lora_alpha: int = field(
+        default=32,
+        metadata={"help": "LoRA alpha."},
+    )
+    lora_dropout: float = field(
+        default=0.1,
+        metadata={"help": "LoRA dropout."},
+    )
+    lora_target_modules: Optional[list[str]] = field(
+        default_factory=lambda: ["q_proj", "k_proj", "v_proj"],
+        metadata={"help": "LoRA target modules."},
+    )
 ```
 
 数据集超参数设置，这里比较简单，只是加载了本地的数据集
