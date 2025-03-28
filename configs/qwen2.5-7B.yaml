@@ -1,0 +1,2 @@
+model_name_or_path: ./weights/Qwen2.5-7B
+output_dir: ./output/qwen2.5-7b-toolcall

@@ -1,0 +1,3 @@
+output_dir: ./output/glm4-9b-toolcall
+use_peft: false
+learning_rate: 5e-5

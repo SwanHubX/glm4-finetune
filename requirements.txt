@@ -3,3 +3,4 @@ trl
 datasets
 peft
 swanlab
+accelerate
