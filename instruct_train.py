@@ -2,12 +2,14 @@
 Refer: https://huggingface.co/docs/trl/sft_trainer#add-special-tokens-for-chat-format for more advance tools
 """
 
+import os
 import argparse
 from typing import Optional, Union, List
 from dataclasses import dataclass, field
 
 import datasets
 from transformers import AutoTokenizer, TrainerCallback
+from transformers.trainer_utils import get_last_checkpoint
 from trl import (
     ModelConfig,
     SFTConfig,
@@ -239,6 +241,20 @@ def main(model_args, data_args, training_args):
     ################
     # Training
     ################
+    if (
+        os.path.isdir(training_args.output_dir)
+        and not training_args.overwrite_output_dir
+    ):
+        last_checkpoint = get_last_checkpoint(training_args.output_dir)
+        if last_checkpoint is None and len(os.listdir(training_args.output_dir)) > 0:
+            raise ValueError(
+                f"Output directory ({training_args.output_dir}) already exists and is not empty. "
+                "Use --overwrite_output_dir to overcome."
+            )
+        print(
+            f"Checkpoint detected, resuming training at {last_checkpoint}. To avoid this behavior, change "
+            "the `--output_dir` or add `--overwrite_output_dir` to train from scratch."
+        )
     trainer = SFTTrainer(
         model=model_args.model_name_or_path,
         args=training_args,
@@ -252,7 +268,7 @@ def main(model_args, data_args, training_args):
         formatting_func=formatting_func,
         callbacks=[SavePredictCallback()],
     )
-    trainer.train()
+    trainer.train(resume_from_checkpoint=last_checkpoint)
 
     # Save
     trainer.save_model(training_args.output_dir)

@@ -1,0 +1,2 @@
+output_dir: "./output/lora-glm4-9b-alpaca_cosine"
+lr_scheduler_type: "cosine"

@@ -1,0 +1,2 @@
+output_dir: "./output/lora-glm4-9b-alpaca_b1"
+per_device_train_batch_size: 1
