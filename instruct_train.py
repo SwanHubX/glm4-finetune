@@ -241,6 +241,7 @@ def main(model_args, data_args, training_args):
     ################
     # Training
     ################
+    last_checkpoint = None
     if (
         os.path.isdir(training_args.output_dir)
         and not training_args.overwrite_output_dir
